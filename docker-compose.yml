@@ -3,7 +3,7 @@ services:
   nodejs:
     build: 
       context: .
-    image: suryabezawada/nodejs-mysql-app
+    image_name: suryabezawada/reactjsmysql
     networks:
       - frontend
       - backend
