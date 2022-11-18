@@ -3,6 +3,7 @@ services:
   nodejs:
     build: 
       context: .
+    command: npm start
     
     networks:
       - frontend
