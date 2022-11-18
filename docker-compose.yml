@@ -3,7 +3,7 @@ services:
   nodejs:
     build: 
       context: .
-    image: amakundu/nodejs-mysql-app
+    image: suryabezawada/nodejs-mysql-app
     networks:
       - frontend
       - backend
@@ -27,20 +27,7 @@ services:
       - MYSQL_PASSWORD=moepass 
       - MYSQL_DATABASE=moe_db
     container_name: moe-mysql-app
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:4.7
-    depends_on:
-      - mysql
-    networks:
-      - backend
-    ports:
-      - "30002:80"
-    environment:
-      - PMA_HOST=moe-mysql-app
-      - PMA_PORT= 3306
-    volumes:
-      - /sessions
-    container_name: moe-phpmyadmin-app
+ 
 networks:
   frontend:
   backend:
