@@ -16,7 +16,7 @@ services:
       - ./www/:/var/www/html/
     ports:
       - "30001:8005"
-    container_name: moe-nodejs-app
+    
   mysql:
     image: mysql:5.7
     networks:
@@ -26,7 +26,7 @@ services:
       - MYSQL_USER=moeuser
       - MYSQL_PASSWORD=moepass 
       - MYSQL_DATABASE=moe_db
-    container_name: moe-mysql-app
+    
  
 networks:
   frontend:
