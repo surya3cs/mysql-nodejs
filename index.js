@@ -1,3 +1,4 @@
+'use strict';
 var mysql = require('mysql');
 var express = require('express');
 
@@ -25,11 +26,10 @@ app.get('/',function(req,res){
    console.log(connectionOptions);
 
    var connection = mysql.createConnection(connectionOptions);
-   var queryStr = SELECT * FROM MOE_ITEM_T;
-   
+
    connection.connect();
  
-   connection.query(queryStr, function (error, results, fields) {
+   connection.query('SELECT * FROM MOE_ITEM_T', function (error, results, fields) {
      if (error) throw error;
      
      responseStr = '';
