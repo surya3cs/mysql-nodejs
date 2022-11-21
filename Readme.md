@@ -147,10 +147,24 @@ networks:
   backend:
 
 
+
 first nodejs image to build the application in docker container that is already written docker file for node js is hosted in this repositoty
 second image for mysql : set the environment variables for host,username and password
 third image is php: i used this image to access the data base application . instead of mysql image i used php image to access the application
 
+docker file for nodejs
+FROM node:8
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8005 
+CMD [ "npm", "start" ]
 
 To access the data base server: Data base applications is running on 30002 port number i have set the reverse proxy without port number . when user can access the application without port number
 ----------
