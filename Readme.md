@@ -93,7 +93,7 @@ It connects to the database and execute an SELECT SQL query and finally returns 
 Using Docker
 ----------
 
-To spin up the nodejs,mysql,phpmyadmin docker images by using docker-compose. docker-compose file given below
+To spin up the nodejs,mysql,phpmyadmin docker containers by using docker-compose. docker-compose file given below
 version: "3.2"
 services:
   nodejs:
