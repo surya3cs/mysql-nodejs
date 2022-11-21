@@ -94,6 +94,57 @@ Using Docker
 ----------
 
 To spin up the nodejs,mysql,phpmyadmin docker images by using docker-compose. docker-compose file given below
+version: "3.2"
+services:
+  nodejs:
+    build: 
+      context: .
+    image: suryabezawada/nodejsapp
+    
+    networks:
+      - frontend
+      - backend
+    environment:
+      - MYSQL_HOST=moe-mysql-app
+      - MYSQL_USER=moeuser
+      - MYSQL_PASS=moepass
+      - MYSQL_DB=moe_db
+    container_name: moe-nodejs-app
+    volumes:
+      - ./www/:/var/www/html/
+    ports:
+      - "30001:8005"
+    
+  mysql:
+    image: mysql:5.7
+    networks:
+      - backend
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=moeuser
+      - MYSQL_PASSWORD=moepass 
+      - MYSQL_DATABASE=moe_db
+    container_name: moe-mysql-app
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.7
+    depends_on:
+      - mysql
+    networks:
+      - backend
+    ports:
+      - "30002:80"
+    environment:
+      - PMA_HOST=moe-mysql-app
+      - PMA_PORT= 3306
+    
+    volumes:
+      - /sessions
+    container_name: moe-phpmyadmin-app
+    
+ 
+networks:
+  frontend:
+  backend:
 
 
 first nodejs image to build the application in docker container that is already written docker file for node js is hosted in this repositoty
